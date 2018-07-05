@@ -1,6 +1,6 @@
 <template>
 <div>
-<input type="text" v-model="newTodo" @keyup="matchedTodo(newTodo)">
+<input type="text" v-model="newTodo" @keyup="matchedTodo(newTodo)" @keyup.enter="addTodo(newTodo)">
 <button v-on:click="addTodo(newTodo)">Submit</button>
 </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: "AddItem",
   data() {
     return {
-      newTodo: ""
+      newTodo: null
     };
   },
   methods: {
@@ -20,6 +20,7 @@ export default {
     },
     matchedTodo: function(newTodo) {
       this.$emit("matchingTodo", newTodo)
+      
     }
   }
 };
